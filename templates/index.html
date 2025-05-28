@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Notes List Page -->
+<div class="max-w-4xl mx-auto mt-10 p-4">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">All Notes</h1>
+    <a href="/create" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">+ New Note</a>
+    <a href="/logout" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-blue-700">Logout</a>
+  </div>
+
+
+  {% for note in notes %}
+  <a href="note/{{ note.id }}">
+    <div class="space-y-4">
+      <div class="p-4 bg-white rounded shadow flex justify-between items-center">
+        <div>
+          <h2 class="font-semibold text-lg">{{ note.title }}</h2>
+          <p class="text-gray-600">{{ note.created_at }}</p>
+        </div>
+        <div class="flex space-x-2">
+          <a href="edit/{{ note.id }}" class="text-blue-600 hover:underline">Edit</a>
+          <a href="delete/{{ note.id }}" class="text-red-600 hover:underline">Delete</a>
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock %}
